@@ -1,78 +1,109 @@
 # Estúdio R — Cabelo & Beleza
 
-Landing page em React, TypeScript e Vite para o Estúdio R, salão em Tietê/SP especializado em Mega Hair.
+Landing page oficial do **Estúdio R**, salão de beleza localizado em Tietê, São Paulo, com especialização em Mega Hair.
 
-## Desenvolvimento local
+[Acessar o site](https://salaoestudior.com/)
 
-Requer Node.js 20 ou superior.
+![Prévia do Estúdio R](public/og-image.jpg)
+
+## Sobre o projeto
+
+O site apresenta os serviços e diferenciais do Estúdio R por meio de uma experiência visual responsiva, com animações controladas pelo scroll e chamadas diretas para agendamento pelo WhatsApp.
+
+### Funcionalidades
+
+- Animação interativa de transformação do corte de cabelo.
+- Apresentação em slides sobre aplicação de Mega Hair.
+- Serviços e valores revelados progressivamente durante o scroll.
+- Integração com WhatsApp para dúvidas e agendamentos.
+- Localização integrada ao Google Maps.
+- Links para Instagram, Facebook e WhatsApp.
+- Layout responsivo para celulares, tablets e desktops.
+- Suporte à preferência de redução de movimento.
+- SEO local com dados estruturados do tipo `BeautySalon`.
+- Open Graph, Twitter Card, sitemap, robots e manifest.
+
+## Tecnologias
+
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vite.dev/)
+- CSS responsivo com animações nativas
+- Cloudflare Pages
+
+## Executando localmente
+
+### Requisitos
+
+- Node.js 20 ou superior
+- npm
+
+Depois de clonar o repositório, execute:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Validação de produção:
+O servidor local ficará disponível no endereço informado pelo Vite.
+
+### Build de produção
 
 ```bash
 npm run build
 npm run preview
 ```
 
-## Estrutura
+Os arquivos de produção são gerados em `dist/`.
 
-- `src/App.tsx`: conteúdo, serviços, localização, CTAs e contatos.
-- `src/HaircutScene.tsx`: animação do corte.
-- `src/styles.css`: layout, responsividade e movimentos.
-- `public/assets`: imagens otimizadas em WebP.
-- `public/_headers`: cabeçalhos de segurança e cache do Cloudflare Pages.
-- `public/_redirects`: fallback da SPA.
-- `public/robots.txt` e `public/sitemap.xml`: indexação.
-- `scripts/optimize_assets.py`: geração dos WebP e da imagem social.
+## Estrutura principal
 
-## Publicar pelo GitHub e Cloudflare Pages
-
-### 1. GitHub
-
-Crie um repositório vazio no GitHub. Depois, no terminal desta pasta:
-
-```bash
-git add .
-git commit -m "feat: lançar site do Estúdio R"
-git remote add origin https://github.com/SEU-USUARIO/estudio-r.git
-git push -u origin main
+```text
+├── public/
+│   ├── assets/             # Imagens otimizadas
+│   ├── _headers            # Cache e segurança no Cloudflare
+│   ├── _redirects          # Fallback da aplicação
+│   ├── robots.txt
+│   └── sitemap.xml
+├── scripts/
+│   └── optimize_assets.py  # Otimização dos recursos visuais
+├── src/
+│   ├── App.tsx             # Seções, conteúdo e CTAs
+│   ├── HaircutScene.tsx    # Animação principal
+│   ├── main.tsx
+│   └── styles.css
+└── index.html              # Metadados e dados estruturados
 ```
 
-O workflow em `.github/workflows/ci.yml` valida todo push e pull request.
+## Deploy no Cloudflare Pages
 
-### 2. Cloudflare Pages
+O projeto está configurado para deploy contínuo a partir da branch `main`.
 
-No painel Cloudflare, acesse **Workers & Pages → Create → Pages → Connect to Git** e selecione o repositório.
+| Configuração | Valor |
+| --- | --- |
+| Framework | React (Vite) |
+| Build command | `npm run build` |
+| Output directory | `dist` |
+| Node.js | 20 |
 
-- Framework preset: `React (Vite)`
-- Production branch: `main`
-- Build command: `npm run build`
-- Build output directory: `dist`
-- Root directory: `/`
-- Node version: `20`
+O workflow em `.github/workflows/ci.yml` valida o build em pushes e pull requests.
 
-O Cloudflare criará um endereço `*.pages.dev` e fará um novo deploy a cada push em `main`.
+## Qualidade
 
-### 3. Domínio `salaoestudior.com`
+O projeto inclui melhorias de acessibilidade, performance e indexação:
 
-Abra o projeto no Cloudflare Pages, acesse **Custom domains → Set up a domain** e informe `salaoestudior.com`. Como é um domínio raiz, a zona e os nameservers do domínio precisam estar no Cloudflare. Adicione também `www.salaoestudior.com` e configure um redirecionamento permanente para o domínio sem `www`.
+- Navegação semântica e link para pular ao conteúdo.
+- Nomes acessíveis para links, botões, mapa e redes sociais.
+- Estados de foco visíveis e contraste revisado.
+- Tratamento para `prefers-reduced-motion`.
+- Imagens em WebP e dimensões explícitas para reduzir layout shift.
+- Cabeçalhos de cache e segurança para Cloudflare Pages.
+- Metadados voltados para buscas locais em Tietê e região.
 
-## SEO e aquisição
+## Autor
 
-O projeto contém canonical, Open Graph, Twitter Card, sitemap, robots, manifest, imagem social, dados estruturados `BeautySalon`, endereço, telefone e redes sociais.
+Desenvolvido por [Bruno Camerin Santarem](https://www.linkedin.com/in/bruno-camerin-santarem-bbb2aa1ab/).
 
-Depois da publicação:
+## Direitos de uso
 
-1. Cadastre e valide `https://salaoestudior.com` no Google Search Console.
-2. Envie `https://salaoestudior.com/sitemap.xml`.
-3. Atualize o Perfil da Empresa no Google com o mesmo nome, endereço, telefone e URL.
-4. Configure Google Analytics ou Plausible para medir cliques nos CTAs do WhatsApp.
-5. Solicite avaliações de clientes no Perfil da Empresa.
-
-## Contatos públicos
-
-Os links oficiais ficam no início de `src/App.tsx`: `WHATSAPP_NUMBER`, `INSTAGRAM_URL` e `FACEBOOK_URL`.
+A identidade visual, os textos e os recursos de imagem pertencem ao Estúdio R. Este repositório não concede licença para reutilização comercial desses materiais.
