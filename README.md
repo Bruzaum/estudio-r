@@ -62,7 +62,7 @@ Os arquivos de produção são gerados em `dist/`.
 ├── public/
 │   ├── assets/             # Imagens otimizadas
 │   ├── _headers            # Cache e segurança no Cloudflare
-│   ├── _redirects          # Fallback da aplicação
+│   ├── .assetsignore       # Exclui fontes PNG não utilizadas do deploy
 │   ├── robots.txt
 │   └── sitemap.xml
 ├── scripts/
@@ -72,7 +72,8 @@ Os arquivos de produção são gerados em `dist/`.
 │   ├── HaircutScene.tsx    # Animação principal
 │   ├── main.tsx
 │   └── styles.css
-└── index.html              # Metadados e dados estruturados
+├── index.html              # Metadados e dados estruturados
+└── wrangler.jsonc          # Assets e fallback SPA no Cloudflare
 ```
 
 ## Deploy no Cloudflare Pages
@@ -84,6 +85,7 @@ O projeto está configurado para deploy contínuo a partir da branch `main`.
 | Framework | React (Vite) |
 | Build command | `npm run build` |
 | Output directory | `dist` |
+| Deploy command | `npx wrangler deploy` |
 | Node.js | 20 |
 
 O workflow em `.github/workflows/ci.yml` valida o build em pushes e pull requests.
