@@ -45,3 +45,32 @@
 @media(max-width:600px){.floating-whatsapp{right:14px;bottom:14px}.floating-whatsapp span{display:none}.floating-whatsapp{width:48px;height:48px;padding:0;justify-content:center}}
 @media(prefers-reduced-motion:reduce){.floating-whatsapp,.skip-link{transition:none}}
 
+/* Ícone sólido do WhatsApp: evita que a regra de contorno dos demais ícones o esvazie. */
+.socials .whatsapp-icon,
+.floating-whatsapp .whatsapp-icon{
+  fill:currentColor;
+  stroke:none;
+}
+
+/* Mantém todo o conteúdo do terceiro slide legível em celulares altos e estreitos. */
+@media(max-width:600px){
+  .mega-sticky{grid-template-rows:auto auto minmax(0,1fr);gap:16px;padding:38px 22px 22px}
+  .mega .section-heading h2{font-size:clamp(1.9rem,8vw,2.25rem);line-height:1.02;margin-top:10px}
+  .slide-tabs button{min-width:0;padding:12px 5px;line-height:1.2;white-space:normal;overflow-wrap:anywhere}
+  .slides-window{min-height:0}
+  .mega-slide{display:block;padding:24px 4px 16px;overflow-y:auto;overscroll-behavior:contain}
+  .slide-number{position:absolute;top:22px;right:4px;font-size:1.65rem}
+  .mega-slide h3{max-width:calc(100% - 42px);font-size:clamp(1.85rem,8vw,2.2rem);line-height:1.04;margin:0 0 14px}
+  .mega-slide p{font-size:.86rem;line-height:1.5;margin:0 0 18px}
+  .mega-slide .button{padding:12px 16px;gap:12px;font-size:.82rem}
+  .mega-slide .button span{width:24px;height:24px}
+}
+
+@media(max-width:600px) and (max-height:760px){
+  .mega-sticky{padding-top:24px;gap:12px}
+  .mega .section-heading h2{font-size:1.75rem}
+  .mega-slide{padding-top:18px}
+  .mega-slide h3{font-size:1.7rem}
+  .mega-slide p{font-size:.8rem;line-height:1.4;margin-bottom:12px}
+}
+
