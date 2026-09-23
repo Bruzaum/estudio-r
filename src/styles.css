@@ -74,3 +74,6 @@
   .mega-slide p{font-size:.8rem;line-height:1.4;margin-bottom:12px}
 }
 
+@media(min-height:1000px){
+  .slide-tabs {justify-content:center}
+}
